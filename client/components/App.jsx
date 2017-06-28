@@ -1,5 +1,10 @@
 import React from 'react';
-import { Card, CardActions, DatePicker, Input, Button, Dialog, Link } from 'react-toolbox';
+
+import Form from './form.jsx'
+import DecryptModal from './decryptModal.jsx'
+import PassPhrase from "./passphrase.jsx"
+
+import { Card, CardActions, Button } from 'react-toolbox';
 
 export default class App extends React.Component {
       constructor(props) {
@@ -95,30 +100,21 @@ export default class App extends React.Component {
     return (
      <div>
          <Card style={{width: '800px', padding: "5%", margin: "0 auto"}}>
-                <form>
-                    <Input type="text" label="Name" name="name" value={this.state.name} onChange={this.handleChange}/>
-                    <Input type="text" label="Message" name="message" maxLength={120} value={this.state.message} onChange={this.handleChange}/>
-                    <DatePicker label="Expiration" name="date" value={this.state.date} onChange={this.handleChange}/>
-                </form>
+             <Form onChange={this.handleChange} name={this.state.name} message={this.state.message} date={this.state.date}/>
                 <CardActions>
                     <Button onClick={this.handleEncrypt}>ENCRYPT</Button>
                     <Button onClick={this.handleToggle}>DECRYPT</Button>
                 </CardActions>
-                <Dialog
-                    actions={this.actions}
-                    active={this.state.active}
-                    onEscKeyDown={this.handleToggle}
-                    onOverlayClick={this.handleToggle}
-                    title='De/Encrypt'>
-                    <Input type="text" label="Encrypted Message" name="encryptedMessage" value={this.state.encryptedMessage} onChange={this.handleChange}/>
-                    <Input type="text" label="Enter The Passphrase" name="passphraseAttempt" value={this.state.passphraseAttempt} onChange={this.handleChange} />
-                </Dialog>
-                <div style={{textAlign: "center"}}>
-                    <div>
-                    Your Passphrase is {this.state.passphrase}
-                    </div>
-                    <Link onClick={this.generatePassPhrase} href="#" label="Generate New Passphrase"/>
-                </div>
+                <DecryptModal 
+                actions={this.actions} 
+                active={this.state.active} 
+                onEscKeyDown={this.handleToggle} 
+                onOverlayClick={this.handleToggle} 
+                encryptedMessage={this.state.encryptedMessage}
+                passphrase={this.state.passphrase}
+                onChange={this.handleChange}
+                    />
+                <PassPhrase passphrase={this.state.passphrase} generatePassPhrase={this.generatePassPhrase} />
         </Card>
     </div>);
   }
