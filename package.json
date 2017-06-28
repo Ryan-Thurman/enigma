@@ -7,7 +7,8 @@
   "author": "Ryan Thurman",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "NODE_PATH=$NODE_PATH:./src node server",
+    "dev": "npm start & webpack-dev-server --progress --colors" 
   },
   "dependencies": {
     "css-loader": "^0.28.4",
