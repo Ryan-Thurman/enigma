@@ -9,7 +9,7 @@ let server = new Hapi.Server()
 
 server.connection({
     host: 'localhost',
-    port: 3001,
+    port: 3100,
     routes: {
         cors: true
     }

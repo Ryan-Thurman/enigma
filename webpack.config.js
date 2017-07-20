@@ -11,17 +11,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       filename: 'index_bundle.js'
     },
     resolve: {
-      extensions: [".js", ".json", ".css"]
+      extensions: [".js",".jsx", ".json", ".css"]
     },
     module: {
       loaders: [{
-          test: /\.js$/,
-          loader: 'babel-loader',
+          test: /\.jsx?$/,
+          loaders: 'babel-loader',
           exclude: /node_modules/
         },
         {
-          test: /\.jsx$/,
-          loader: 'babel-loader',
+          test: /\.jsx?$/,
+          loaders: ['eslint-loader'],
           exclude: /node_modules/
         },
         {

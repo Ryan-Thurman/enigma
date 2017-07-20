@@ -1,21 +1,23 @@
 import React from 'react';
 import { Input, Dialog } from 'react-toolbox';
 
-export default class DecryptModal extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return (
-                <Dialog
-                    actions={this.props.actions}
-                    active={this.props.active}
-                    onEscKeyDown={this.props.handleToggle}
-                    onOverlayClick={this.props.handleToggle}
-                    title='De/Encrypt'>
-                    <Input type="text" label="Encrypted Message" name="encryptedMessage" value={this.props.encryptedMessage} onChange={this.props.handleChange}/>
-                    <Input type="text" label="Enter The Passphrase" name="passphraseAttempt" value={this.props.passphraseAttempt} onChange={this.props.handleChange} />
-                </Dialog>
-        )
-    }
-}
+const DecryptModal = props => (
+  <Dialog
+    actions={props.actions}
+    active={props.active}
+    onEscKeyDown={props.handleToggle}
+    onOverlayClick={props.handleToggle}
+    title="De/Encrypt"
+  >
+    <Input type="text" label="Encrypted Message" name="encryptedMessage" value={props.encryptedMessage} onChange={props.handleChange} />
+  </Dialog>
+);
+
+DecryptModal.propTypes = {
+  actions: React.PropTypes.array.isRequired,
+  active: React.PropTypes.bool.isRequired,
+  handleToggle: React.PropTypes.func.isRequired,
+  encryptedMessage: React.PropTypes.string.isRequired,
+  handleChange: React.PropTypes.func.isRequired,
+};
+export default DecryptModal;
