@@ -7,9 +7,9 @@ const TooltipLink = Tooltip(Link);
 const PassPhrase = props => (
   <div style={{ margin: '3% auto', width: '35%', textAlign: 'center' }}>
     <div>
-      { 'Your Passphraase -' }<TooltipLink onClick={props.handleCopy}label={props.passphrase} tooltip="Copy to clipboard" style={{ display: 'inline-block', opacity: 1, color: 'blue' }} />
+      { 'Your Passphrase -' }<TooltipLink onClick={props.handleCopy}label={props.passphrase} tooltip="Copy to clipboard" style={{ display: 'inline-block', opacity: 1, color: 'blue' }} />
     </div>
-    <Link onClick={props.generatePassPhrase} href={`#p=${props.passphrase}`} label="Generate New Passphrase" style={{ textDecoration: 'none', margin: '2% auto', color: 'blue', opacity: 1 }} />
+    <Link onClick={props.generatePassPhrase} href={`#p=${props.passphrase}`} label="Generate new Passphrase" style={{ textDecoration: 'none', margin: '2% auto', color: 'blue', opacity: 1 }} />
   </div>
 );
 
